@@ -1,0 +1,24 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{js,ts,jsx,tsx,json,css,md,yml,yaml}"
+      run: pnpm exec prettier --write --ignore-unknown {staged_files}
+      stage_fixed: true
+    lint:
+      run: pnpm exec oxlint --deny-warnings
+    go-fmt:
+      glob: "*.go"
+      run: cd apps/api && test -z "$(gofmt -l .)" && go vet ./...
+    secretos:
+      run: gitleaks protect --staged --redact --no-banner
+
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: pnpm typecheck
+    test:
+      run: pnpm test
+    test-api:
+      run: pnpm test:api
