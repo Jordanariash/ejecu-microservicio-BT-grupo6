@@ -10,11 +10,11 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
     go build -buildvcs=false -trimpath \
     -ldflags="-s -w -X main.version=$VERSION" \
-    -o /out/servicio ./cmd/api
+    -o /out/base-tecnica-grupo6 ./cmd/api
 
 FROM gcr.io/distroless/static-debian13:nonroot@sha256:f7f8f729987ad0fdf6b05eeeae94b26e6a0f613bdf46feea7fc40f7bd72953e6
 WORKDIR /app
-COPY --from=build --chown=nonroot:nonroot /out/servicio /app/servicio
+COPY --from=build --chown=nonroot:nonroot /out/base-tecnica-grupo6 /app/base-tecnica-grupo6
 USER nonroot:nonroot
 EXPOSE 8080
-ENTRYPOINT ["/app/servicio"]
+ENTRYPOINT ["/app/base-tecnica-grupo6"]
