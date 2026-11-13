@@ -1,0 +1,9 @@
+packages:
+  - apps/web
+
+# Versiones compartidas (DAS sección 3). Van exactas, sin ^ ni ~.
+catalog:
+  react: 19.2.8
+  react-dom: 19.2.8
+  typescript: 6.0.3
+  vite: 8.1.5

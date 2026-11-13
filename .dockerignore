@@ -1,0 +1,7 @@
+# DAS sección 4: nada de secretos, historial ni dependencias locales dentro de la imagen
+.git
+.env*
+**/node_modules
+**/dist
+**/coverage
+coverage.out
