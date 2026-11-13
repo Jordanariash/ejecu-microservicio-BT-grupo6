@@ -7,3 +7,9 @@ catalog:
   react-dom: 19.2.8
   typescript: 6.0.3
   vite: 8.1.5
+  "@vitejs/plugin-react": 6.0.4
+  vitest: 4.1.10
+  # No están en la tabla del DAS: tipos de React para TypeScript y cobertura para SonarQube
+  "@types/react": 19.3.0
+  "@types/react-dom": 19.3.0
+  "@vitest/coverage-v8": 4.1.10
