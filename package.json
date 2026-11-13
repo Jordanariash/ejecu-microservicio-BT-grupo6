@@ -1,0 +1,25 @@
+{
+  "name": "base-tecnica-grupo6",
+  "private": true,
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "22.22.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "oxlint --deny-warnings",
+    "codegen": "cd apps/api && go run ./cmd/api openapi > ../../contracts/openapi.yaml",
+    "test:api": "cd apps/api && go test ./...",
+    "test:e2e:api": "sh apps/api/e2e/correr.sh",
+    "typecheck": "pnpm --filter ./apps/web typecheck",
+    "test": "pnpm --filter ./apps/web test",
+    "build": "pnpm --filter ./apps/web build",
+    "verify": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm test:api && pnpm build"
+  },
+  "devDependencies": {
+    "lefthook": "2.1.10",
+    "oxlint": "1.75.0",
+    "prettier": "3.9.6"
+  }
+}
