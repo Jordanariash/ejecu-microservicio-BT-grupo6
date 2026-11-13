@@ -18,3 +18,12 @@ que el DAS quedó desactualizado y que hay que subir las versiones.
 ## golang.org/x/sync: v0.17.0 → v0.22.0
 
 - Dependencia indirecta: la exige `golang.org/x/text` v0.41.0.
+
+## Dependencias de las pruebas e2e (las trae testcontainers-go v0.43.0)
+
+- Motivo: Trivy encontró vulnerabilidades HIGH con corrección disponible. El DAS pide actualizar
+  la dependencia en ese caso.
+- `golang.org/x/crypto`: v0.51.0 → v0.55.0 (10 CVE en `x/crypto/ssh`).
+- `github.com/klauspost/compress`: v1.18.5 → v1.18.7 (1 CVE).
+- `github.com/moby/go-archive`: v0.2.0 → v0.3.0 (1 CVE).
+- Solo se usan al correr las pruebas: no quedan dentro de la imagen de la API.

@@ -10,6 +10,7 @@ node_modules/
 dist/
 coverage/
 coverage.out
+apps/api/.cobertura/
 *.log
 
 # Editores y sistema

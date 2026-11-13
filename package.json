@@ -11,6 +11,7 @@
     "lint": "oxlint --deny-warnings",
     "codegen": "cd apps/api && go run ./cmd/api openapi > ../../contracts/openapi.yaml",
     "test:api": "cd apps/api && go test ./...",
+    "test:e2e:api": "sh apps/api/e2e/correr.sh",
     "verify": "pnpm format:check && pnpm test:api"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ pnpm-lock.yaml
 contracts/openapi.yaml
 apps/api/internal/repository/
 apps/web/src/components/ui/
+apps/api/e2e/testdata/
 
 # Salidas de build y pruebas
 dist/
