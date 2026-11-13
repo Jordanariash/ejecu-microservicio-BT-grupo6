@@ -55,6 +55,8 @@ jobs:
       - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
         env:
           GITLEAKS_VERSION: 8.30.1
+          # La action lo necesita para revisar los commits de un PR
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: cd apps/api && go run golang.org/x/vuln/cmd/govulncheck@${GOVULNCHECK_VERSION} ./...
       - uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0 (hadolint v2.15.1)
         with: { recursive: true, failure-threshold: error }
