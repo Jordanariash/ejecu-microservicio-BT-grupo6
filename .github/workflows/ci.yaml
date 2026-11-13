@@ -30,7 +30,11 @@ jobs:
       - run: pnpm codegen && git diff --exit-code
       - name: contrato compatible con main
         run: |
-          git show origin/main:contracts/openapi.yaml > /tmp/base.yaml
+          # Si main todavía no tiene un contrato (no existe o está vacío), no hay contra qué comparar
+          if ! git show origin/main:contracts/openapi.yaml > /tmp/base.yaml 2>/dev/null || [ ! -s /tmp/base.yaml ]; then
+            echo "::notice::main aún no tiene contrato: se omite la comparación con oasdiff"
+            exit 0
+          fi
           go run github.com/oasdiff/oasdiff@${OASDIFF_VERSION} breaking /tmp/base.yaml contracts/openapi.yaml --fail-on ERR
       - run: pnpm test:e2e:api # binario con -cover, deja cobertura en GOCOVERDIR
       - uses: SonarSource/sonarqube-scan-action@4d1dc0c91ee400dcf8a6dddf2f705ac36542e304 # v8.4.0
