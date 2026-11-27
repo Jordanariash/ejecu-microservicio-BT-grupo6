@@ -41,9 +41,10 @@ func TestSaludDelServicio(t *testing.T) {
 	servicio, direccion, logs := levantarServicio(t, binario, urlBaseDatos)
 
 	var reporte strings.Builder
-	reporte.WriteString("# E2E: salud del servicio\n\n")
+	reporte.WriteString("# E2E: salud y sesiones del servicio\n\n")
 	anotar(&reporte, "GET /healthz con la base de datos arriba", pedir(t, direccion+"/healthz"))
 	anotar(&reporte, "GET /readyz con la base de datos arriba", pedir(t, direccion+"/readyz"))
+	probarSesiones(t, direccion, &reporte)
 
 	err = baseDatos.Stop(ctx, nil)
 	if err != nil {

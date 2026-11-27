@@ -91,6 +91,9 @@ func crearAPI(rutas *http.ServeMux, entorno string, salud *service.Salud) huma.A
 
 	apiHuma := humago.New(rutas, opcionesHuma)
 	api.RegistrarRutasSalud(apiHuma, salud)
+	if entorno == "dev" || entorno == "test" {
+		api.RegistrarRutasSesiones(apiHuma)
+	}
 	return apiHuma
 }
 
