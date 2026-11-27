@@ -27,3 +27,7 @@ que el DAS quedó desactualizado y que hay que subir las versiones.
 - `github.com/klauspost/compress`: v1.18.5 → v1.18.7 (1 CVE).
 - `github.com/moby/go-archive`: v0.2.0 → v0.3.0 (1 CVE).
 - Solo se usan al correr las pruebas: no quedan dentro de la imagen de la API.
+
+## Goose v3.24.1 → v3.30.1
+- Trivy detectó 29 hallazgos HIGH o CRITICAL con corrección disponible en la imagen de `migrate`.
+- En la prueba con v3.30.1, Con Trivy se reportaron 0 hallazgos con ese filtro y la migración funcionó.
