@@ -29,5 +29,6 @@ que el DAS quedó desactualizado y que hay que subir las versiones.
 - Solo se usan al correr las pruebas: no quedan dentro de la imagen de la API.
 
 ## Goose v3.24.1 → v3.30.1
+
 - Trivy detectó 29 hallazgos HIGH o CRITICAL con corrección disponible en la imagen de `migrate`.
 - En la prueba con v3.30.1, Con Trivy se reportaron 0 hallazgos con ese filtro y la migración funcionó.
