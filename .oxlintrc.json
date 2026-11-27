@@ -1,0 +1,37 @@
+{
+  "rules": {
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "localStorage",
+        "message": "No usar localStorage: la sesión va en una cookie HttpOnly."
+      },
+      {
+        "name": "sessionStorage",
+        "message": "No usar sessionStorage: la sesión va en una cookie HttpOnly."
+      },
+      {
+        "name": "fetch",
+        "message": "Usa fetch solo dentro de archivos *.api.ts."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.api.ts"],
+      "rules": {
+        "no-restricted-globals": [
+          "error",
+          {
+            "name": "localStorage",
+            "message": "No usar localStorage: la sesión va en una cookie HttpOnly."
+          },
+          {
+            "name": "sessionStorage",
+            "message": "No usar sessionStorage: la sesión va en una cookie HttpOnly."
+          }
+        ]
+      }
+    }
+  ]
+}
