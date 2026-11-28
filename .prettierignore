@@ -1,6 +1,7 @@
 # Archivos generados por herramientas: no se formatean a mano
 pnpm-lock.yaml
 contracts/openapi.yaml
+apps/web/src/tipos-api.d.ts
 apps/api/internal/repository/
 apps/web/src/components/ui/
 apps/api/e2e/testdata/
