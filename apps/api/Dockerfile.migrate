@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1.7
+FROM --platform=$BUILDPLATFORM golang:1.26.11-alpine3.23@sha256:db99415e2625ce0ee03eed09edf7f32ae8c58dc399f28cc602a87fe7238119e4 AS build
+ARG TARGETOS TARGETARCH
+RUN --mount=type=cache,target=/go/pkg/mod \
+    GOBIN=/out CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
+    go install github.com/pressly/goose/v3/cmd/goose@v3.30.1
+
+FROM alpine:3.23.7@sha256:ff7f0c727dd796aa36787bfcd9a64bf35a6ce72a73451b3359fde849b6703d63
+RUN addgroup -S migrador && adduser -S -G migrador migrador
+WORKDIR /app
+COPY --from=build --chown=migrador:migrador /out/goose /app/goose
+COPY --chown=migrador:migrador apps/api/db/migrations/ /app/db/migrations/
+USER migrador:migrador
+ENTRYPOINT ["/app/goose"]
+CMD ["-dir", "/app/db/migrations", "up"]
